@@ -1,0 +1,4 @@
+#Ignoe node_module directory
+node_modules/
+
+#other files not required to track the by the git
