@@ -6,7 +6,7 @@ const db = require('./db');
 app.get('/', function (req, res) {
     res.send('How can i help you sir..')
 })
-//commit for next version
+//commit for next version for testing
 app.listen(4000,()=>{
     console.log("Listening on port number 4000")
 })//server at address of localhost 4000
