@@ -25,10 +25,11 @@
 // //Export the database connection
 // module.exports = db;
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 //define the mongoDB connection URL
-//const mongoURI = 'mongodb://localhost:27017/hotels';
-const mongoURI ='mongodb+srv://pratikk12093:a7b7u9uGTe9BRi0q@hotel.fliqu.mongodb.net/';
+//const mongoURI = process.env.DB_OFFLINE_URL;
+const mongoURI =process.env.DB_URL;
 
 
 // Connect to MongoDB

@@ -4,6 +4,7 @@ const db =require('./db');
 const Person = require('./models/Person');
 const MenuItem = require('./models/MenuItems');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 app.use(bodyParser.json());//req.body me store kr lega
 
 //POST route to add a person
@@ -36,7 +37,7 @@ app.get('/person',async (req,res)=>{
 app.get('/',function(req,res){
   res.send("welcome to my hotel.. How i can help you ?");
 })
-
-app.listen(4000,()=>{
+const PORT = process.env.PORT || 3000;
+app.listen(PORT,()=>{
   console.log('Listening on port 4000');
 })

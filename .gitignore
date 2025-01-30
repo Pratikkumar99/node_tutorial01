@@ -1,4 +1,6 @@
 #Ignoe node_module directory
 node_modules/
+notes.txt
+.env
 
 #other files not required to track the by the git
