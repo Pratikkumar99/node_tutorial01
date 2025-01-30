@@ -62,34 +62,63 @@
     
 // // //Export the database connection   
 // // module.exports = db;
+// const mongoose = require('mongoose');
+// require('dotenv').config();  // Make sure .env is loaded
+
+// //define the mongoDB connection URL
+// //const mongoURI = process.env.DB_OFFLINE_URL;
+// const mongoURI =process.env.DB_URL;
+
+// // Connect to MongoDB without deprecated options
+// mongoose.connect(mongoURI)
+//     .then(() => {
+//         console.log('Connected to MongoDB');
+//     })
+//     .catch((err) => {
+//         console.error('Error connecting to MongoDB:', err);
+//     });
+
+// // Get the default connection
+// const db = mongoose.connection;
+
+// // Event listeners for MongoDB connection
+// db.on('connected', () => {
+//     console.log('Mongoose connected to MongoDB');
+// });
+
+// db.on('disconnected', () => {
+//     console.log('Mongoose disconnected');
+// });
+
+// db.on('error', (err) => {
+//     console.error('Mongoose connection error:', err);
+// });
+
+// module.exports = db;
+
 const mongoose = require('mongoose');
-require('dotenv').config();  // Make sure .env is loaded
+require('dotenv').config();
 
-//define the mongoDB connection URL
-//const mongoURI = process.env.DB_OFFLINE_URL;
-const mongoURI =process.env.DB_URL;
+// Ensure DB_URL is set
+const mongoURI = process.env.DB_URL;
+if (!mongoURI) {
+    console.error("Error: DB_URL is not defined in environment variables.");
+    process.exit(1);
+}
 
-// Connect to MongoDB without deprecated options
+// Connect to MongoDB (Remove deprecated options)
 mongoose.connect(mongoURI)
     .then(() => {
         console.log('Connected to MongoDB');
     })
     .catch((err) => {
         console.error('Error connecting to MongoDB:', err);
+        process.exit(1);
     });
 
-// Get the default connection
 const db = mongoose.connection;
 
-// Event listeners for MongoDB connection
-db.on('connected', () => {
-    console.log('Mongoose connected to MongoDB');
-});
-
-db.on('disconnected', () => {
-    console.log('Mongoose disconnected');
-});
-
+// Event Listeners
 db.on('error', (err) => {
     console.error('Mongoose connection error:', err);
 });
