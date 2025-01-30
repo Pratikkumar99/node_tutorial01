@@ -26,7 +26,7 @@ db.on('error',()=>{
 module.exports = db;
 
 
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 require('dotenv').config();
 
 //define the mongoDB connection URL
